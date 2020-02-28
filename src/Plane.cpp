@@ -6,7 +6,16 @@ bool Plane::intersect(
 {
   ////////////////////////////////////////////////////////////////////////////
   // Replace with your code here:
-  return false;
   ////////////////////////////////////////////////////////////////////////////
+  double num = ray.direction.dot(normal);
+
+  if (num == 0) return false;
+  double temp = normal.dot(point) - normal.dot(ray.origin);
+  t = temp / num;
+  if (t >= min_t){
+  n = normal.normalized();
+  return true;
+  }
+  else return false;
 }
 
